@@ -15,7 +15,8 @@ from torch import optim
 import torch.nn as nn
 from types import SimpleNamespace
 from fastprogress import progress_bar, master_bar
-from utils import *
+from ut import *
+
 from modules import UNet_conditional, EMA
 import logging
 import wandb
@@ -28,7 +29,7 @@ config = SimpleNamespace(
     batch_size = 10,
     img_size = 64,
     num_classes = 10,
-    dataset_path = get_cifar(img_size=64),
+    dataset_path = "mnist",
     train_folder = "train",
     val_folder = "test",
     device = "cuda",
@@ -42,6 +43,7 @@ config = SimpleNamespace(
 
 
 logging.basicConfig(format="%(asctime)s - %(levelname)s: %(message)s", level=logging.INFO, datefmt="%I:%M:%S")
+
 
 
 class Diffusion:
